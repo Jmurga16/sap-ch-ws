@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wydnex.sapchws.motivosustento.mappers.MotivoSustentoMapper">
+
+    <select id="registrarMotivoSustento" resultType="int">
+        exec SAP_ForRegMotSus_sp
+        #{motivoSustento.CDESCRIPCI},
+        #{motivoSustento.IVIGENTE}
+
+    </select>
+
+    <select id="actualizarMotivoSustento" resultType="int">
+        exec SAP_ForUpdMotSus_sp
+        #{motivoSustento.IMOTSUSAMP},
+        #{motivoSustento.CDESCRIPCI},
+        #{motivoSustento.IVIGENTE}
+    </select>
+
+    <select id="listarMotivoSustento" resultMap="mapMotivoSustento">
+        exec SAP_ForLisMotSus_sp
+    </select>
+
+
+    <resultMap id="mapMotivoSustento" type="com.wydnex.sapchws.motivosustento.model.MotivoSustento">
+        <result property="IMOTSUSAMP" column="IMOTSUSAMP" jdbcType="INTEGER"/>
+        <result property="CDESCRIPCI" column="CDESCRIPCI" jdbcType="VARCHAR"/>
+        <result property="IVIGENTE" column="IVIGENTE" jdbcType="SMALLINT"/>
+    </resultMap>
+</mapper>

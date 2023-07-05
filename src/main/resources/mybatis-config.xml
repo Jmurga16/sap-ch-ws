@@ -13,6 +13,7 @@
 
         <mapper resource="mappers/util/UtilMapper.xml"/>
         <mapper resource="mappers/configuracion/UsuarioMapper.xml"/>
+        <mapper resource="mappers/motivosustento/MotivoSustentoMapper.xml"/>
 
     </mappers>
 
