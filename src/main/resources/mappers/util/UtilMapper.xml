@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wydnex.sapchws.utils.mappers.UtilMapper">
+    <select id="listarCombo" resultMap="mapResponseCombo">
+        exec sp_util_combo #{comboRequest,mode=IN,jdbcType=NVARCHAR}
+    </select>
+
+    <resultMap id="mapResponseCombo" type="com.wydnex.sapchws.utils.model.ResponseCombo">
+        <result property="idDefecto" column="valor_defecto" jdbcType="VARCHAR"/>
+        <collection property="items" ofType="com.wydnex.sapchws.utils.model.ComboItem">
+            <id property="id" column="id" jdbcType="VARCHAR"/>
+            <result property="valor" column="valor" jdbcType="VARCHAR"/>
+            <result property="codigo" column="codigo" jdbcType="VARCHAR"/>
+        </collection>
+    </resultMap>
+
+
+    <select id="registrarDocumentos" resultMap="mapResponseDocumentos">
+        exec SAP_ForRegDocumentos_sp
+        #{documentos,typeHandler=com.wydnex.sapchws.utils.config.SapTypeTableDocumento}
+    </select>
+
+    <resultMap id="mapResponseDocumentos" type="com.wydnex.sapchws.utils.model.GrupoDocumento">
+        <result property="grupoDocumentoId" column="grupoDocumentoId" javaType="string" jdbcType="VARCHAR"/>
+        <collection property="documentos" resultMap="documentosMap">
+        </collection>
+    </resultMap>
+
+
+    <select id="obtenerDocumento" resultMap="documentosMap">
+        exec SAP_ForBusDocumento_sp
+        #{idDocumento}
+    </select>
+
+
+    <resultMap id="documentosMap" type="com.wydnex.sapchws.utils.model.Documento">
+        <id property="documentoId" column="documentoId" javaType="string" jdbcType="VARCHAR"/>
+
+        <result property="nombreOriginal" column="nombreOriginal" jdbcType="VARCHAR"/>
+        <result property="contentType" column="contentType" jdbcType="VARCHAR"/>
+        <result property="fechaRegistro" column="fechaRegistro" jdbcType="VARCHAR"/>
+        <result property="extension" column="extension" jdbcType="VARCHAR"/>
+        <result property="tamano" column="tamano" jdbcType="BIGINT"/>
+        <result property="nombreGenerado" column="nombreGenerado" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <select id="obtenerObservaciones" resultType="com.wydnex.sapchws.utils.model.Historial">
+        exec SAP_LisObsHistorial_sp
+        #{observacionId},
+        #{flagNotifiacion}
+    </select>
+
+    <insert id="registrarObservaciones">
+        exec SAP_ForRegObservacion_sp
+        #{historiales,typeHandler=com.wydnex.sapchws.utils.config.SapTypeTableObservacion}
+    </insert>
+
+</mapper>

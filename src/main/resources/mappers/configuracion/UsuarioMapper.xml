@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wydnex.sapchws.configuracion.mappers.UsuarioMapper">
+
+    <select id="registrarUsuario" resultType="int">
+        exec SAP_ForRegUsuDemo_sp
+        #{usuario.usuarioNombre},
+        #{usuario.usuarioFechaNacimiento}
+
+    </select>
+
+    <select id="actualizarUsuario" resultType="int">
+        exec SAP_ForUpdUsuDemo_sp
+        #{usuario.usuarioId},
+        #{usuario.usuarioNombre},
+        ${usuario.usuarioEstado} ,
+        #{usuario.usuarioFechaNacimiento}
+    </select>
+
+    <select id="listarUsuarios" resultMap="mapUsuario">
+        exec SAP_ForLisUsuDemo_sp
+    </select>
+
+    <select id="obtenerUsuarioPorId" resultMap="mapUsuario">
+        exec SAP_ForSelUsuDemo_sp #{usuarioId}
+    </select>
+
+    <resultMap id="mapUsuario" type="com.wydnex.sapchws.configuracion.model.Usuario">
+        <result property="usuarioId" column="usuario_id" jdbcType="INTEGER"/>
+        <result property="usuarioNombre" column="usuario_nombre" jdbcType="VARCHAR"/>
+        <result property="usuarioEstado" column="usuario_estado" jdbcType="INTEGER"/>
+        <result property="usuarioFechaNacimiento" column="usuario_fecha_nacimiento" jdbcType="VARCHAR"/>
+
+    </resultMap>
+
+
+</mapper>
