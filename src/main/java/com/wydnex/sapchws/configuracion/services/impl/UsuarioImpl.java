@@ -3,6 +3,7 @@ package com.wydnex.sapchws.configuracion.services.impl;
 import com.wydnex.sapchws.configuracion.mappers.UsuarioMapper;
 import com.wydnex.sapchws.configuracion.model.Usuario;
 import com.wydnex.sapchws.configuracion.services.UsuarioService;
+import com.wydnex.sapchws.utils.exceptions.BusinessException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -19,6 +20,7 @@ public class UsuarioImpl implements UsuarioService {
 
     @Override
     public Integer registrarUsuario(Usuario usuario) {
+
         return  usuarioMapper.registrarUsuario(usuario);
     }
 

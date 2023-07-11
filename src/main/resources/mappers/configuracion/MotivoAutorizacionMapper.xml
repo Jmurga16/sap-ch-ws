@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wydnex.sapchws.configuracion.mappers.MotivoAutorizacionMapper">
+
+    <select id="listarMotivoAutorizacion" resultType="map">
+        exec SAP_ForLisMotAut_sp
+    </select>
+
+    <select id="registrarMotivoAutorizacion" resultType="int">
+        exec SAP_ForRegMotAut_sp
+        #{motivoAutorizacion.CDESCRIPCI},
+        #{motivoAutorizacion.IVIGENTE}
+    </select>
+
+
+    <select id="actualizarMotivoAutorizacion" resultType="int">
+        exec SAP_ForUpdMotAut_sp
+        #{motivoAutorizacion.IMOTAUTOPC},
+        #{motivoAutorizacion.CDESCRIPCI},
+        #{motivoAutorizacion.IVIGENTE}
+    </select>
+
+    <select id="eliminarMotivoAutorizacion" resultType="int">
+        exec SAP_ForDelMotAut_sp
+        #{motivoAutorizacion.IMOTAUTOPC}
+    </select>
+
+</mapper>
