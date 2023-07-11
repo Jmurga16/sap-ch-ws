@@ -9,13 +9,11 @@
         <setting name="callSettersOnNulls" value="true"/>
 
     </settings>
-    <mappers>
 
+    <mappers>
         <mapper resource="mappers/util/UtilMapper.xml"/>
         <mapper resource="mappers/configuracion/UsuarioMapper.xml"/>
-        <mapper resource="mappers/motivosustento/MotivoSustentoMapper.xml"/>
-
+        <mapper resource="mappers/configuracion/ConfiguracionMapper.xml"/>
     </mappers>
-
 
 </configuration>

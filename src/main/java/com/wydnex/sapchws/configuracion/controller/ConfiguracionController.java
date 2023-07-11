@@ -3,13 +3,10 @@ package com.wydnex.sapchws.configuracion.controller;
 
 import com.wydnex.sapchws.configuracion.model.Usuario;
 import com.wydnex.sapchws.configuracion.services.ConfiguracionService;
-import com.wydnex.sapchws.configuracion.services.MotivoAutorizacionService;
-import com.wydnex.sapchws.configuracion.services.MotivoSustentoService;
 import com.wydnex.sapchws.configuracion.services.UsuarioService;
 import com.wydnex.sapchws.utils.model.ResponseApi;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,8 +18,8 @@ import static com.wydnex.sapchws.utils.config.PathsUtil.VERSION;
 @RequestMapping(ROOT_API + CONFIGURACION + VERSION)
 public class ConfiguracionController {
 
-    private UsuarioService usuarioService;
-    private ConfiguracionService configuracionService;
+    private final UsuarioService usuarioService;
+    private final ConfiguracionService configuracionService;
 
     public ConfiguracionController(UsuarioService usuarioService, ConfiguracionService configuracionService) {
         this.usuarioService = usuarioService;
