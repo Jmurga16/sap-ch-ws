@@ -57,21 +57,21 @@
 
     <select id="registrarMotivoModificacionPres" resultType="map">
         exec SAP_ForRegMotMod_sp
-        #{motivoModificacionPres.CMOTIVOMOD},
-        #{motivoModificacionPres.IFLAGVIGEN},
-        #{motivoModificacionPres.CUSUAREG}
+        #{motivoModificacionPres.motivoModificacion},
+        #{motivoModificacionPres.flagVigente},
+        #{motivoModificacionPres.usuarioRegistro}
     </select>
 
     <select id="actualizarMotivoModificacionPres" resultType="map">
         exec SAP_ForUpdMotMod_sp
-        #{motivoModificacionPres.IMOTIVOMOD},
-        #{motivoModificacionPres.CMOTIVOMOD},
-        #{motivoModificacionPres.IFLAGVIGEN}
+        #{motivoModificacionPres.motivoModificacionId},
+        #{motivoModificacionPres.motivoModificacion},
+        #{motivoModificacionPres.flagVigente}
     </select>
 
     <select id="eliminarMotivoModificacionPres" resultType="map">
         exec SAP_ForDelMotMod_sp
-        #{motivoModificacionPres.IMOTIVOMOD}
+        #{motivoModificacionPres.motivoModificacionId}
     </select>
 
 
@@ -81,27 +81,28 @@
 
     <select id="registrarTipoGasto" resultType="map">
         exec SAP_ForRegTipGas_sp
-        #{tipoGasto.CGASTDESC},
-        #{tipoGasto.IDIASREC},
-        #{tipoGasto.IFLAGREFIN},
-        #{tipoGasto.IFLAGCONF},
-        #{tipoGasto.IFLAGVIG}
+        #{tipoGasto.descripcionGasto},
+        #{tipoGasto.diasRechazo},
+        #{tipoGasto.flagRechazoFinMes},
+        #{tipoGasto.flagConfigurable},
+        #{tipoGasto.flagVigente}
     </select>
 
     <select id="actualizarTipoGasto" resultType="map">
         exec SAP_ForUpdTipGas_sp
-        #{tipoGasto.ITIPGASTID},
-        #{tipoGasto.CGASTDESC},
-        #{tipoGasto.IDIASREC},
-        #{tipoGasto.IFLAGREFIN},
-        #{tipoGasto.IFLAGCONF},
-        #{tipoGasto.IFLAGVIG}
+        #{tipoGasto.tipoGastoId},
+        #{tipoGasto.descripcionGasto},
+        #{tipoGasto.diasRechazo},
+        #{tipoGasto.flagRechazoFinMes},
+        #{tipoGasto.flagConfigurable},
+        #{tipoGasto.flagVigente}
     </select>
 
     <select id="eliminarTipoGasto" resultType="map">
         exec SAP_ForDelTipGas_sp
-        #{tipoGasto.ITIPGASTID}
+        #{tipoGasto.tipoGastoId}
     </select>
+
 
     <select id="listarProceso" resultType="map">
         exec SAP_ForLisOpcion_sp
@@ -122,20 +123,21 @@
         #{procesoId}
     </select>
 
-
     <select id="registrarPlantilla" resultType="map">
         exec SAP_ForRegPlanti_sp
-        #{plantilla.iPROCESOID},
-        #{plantilla.iGRUPODOCI},
-        #{plantilla.iVERSION},
-        #{plantilla.iVIGENTE}
+        #{plantilla.procesoId},
+        #{plantilla.grupoDocumento},
+        #{plantilla.documentoId},
+        #{plantilla.nombreDocumento},
+        #{plantilla.version},
+        #{plantilla.flagVigente}
     </select>
 
     <select id="actualizarPlantilla" resultType="map">
         exec SAP_ForUpdPlanti_sp
-        #{plantilla.iHISPLAID},
-        #{plantilla.iCAROPPLAI},
-        #{plantilla.iVIGENTE}
+        #{plantilla.historialId},
+        #{plantilla.plantillaId},
+        #{plantilla.flagVigente}
     </select>
 
 

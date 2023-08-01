@@ -38,7 +38,6 @@ public class PathsConfiguracion {
     public static final String ELIMINAR_TIPO_GASTO = "/eliminarTipoGasto";
     //endregion
 
-
     //region Endpoints Plantilla
     public static final String LISTAR_PROCESO = "/listarProceso";
     public static final String LISTAR_PLANTILLA = "/listarPlantilla";
