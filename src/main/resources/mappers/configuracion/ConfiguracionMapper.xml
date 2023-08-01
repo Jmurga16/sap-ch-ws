@@ -27,6 +27,7 @@
         #{motivoSustento.IMOTSUSAMP}
     </select>
 
+
     <select id="listarMotivoAutorizacion" resultType="map">
         exec SAP_ForLisMotAut_sp
     </select>
@@ -48,5 +49,94 @@
         exec SAP_ForDelMotAut_sp
         #{motivoAutorizacion.IMOTAUTOPC}
     </select>
+
+
+    <select id="listarMotivoModificacionPres" resultType="map">
+        exec SAP_ForLisMotMod_sp
+    </select>
+
+    <select id="registrarMotivoModificacionPres" resultType="map">
+        exec SAP_ForRegMotMod_sp
+        #{motivoModificacionPres.CMOTIVOMOD},
+        #{motivoModificacionPres.IFLAGVIGEN},
+        #{motivoModificacionPres.CUSUAREG}
+    </select>
+
+    <select id="actualizarMotivoModificacionPres" resultType="map">
+        exec SAP_ForUpdMotMod_sp
+        #{motivoModificacionPres.IMOTIVOMOD},
+        #{motivoModificacionPres.CMOTIVOMOD},
+        #{motivoModificacionPres.IFLAGVIGEN}
+    </select>
+
+    <select id="eliminarMotivoModificacionPres" resultType="map">
+        exec SAP_ForDelMotMod_sp
+        #{motivoModificacionPres.IMOTIVOMOD}
+    </select>
+
+
+    <select id="listarTipoGasto" resultType="map">
+        exec SAP_ForLisTipGas_sp
+    </select>
+
+    <select id="registrarTipoGasto" resultType="map">
+        exec SAP_ForRegTipGas_sp
+        #{tipoGasto.CGASTDESC},
+        #{tipoGasto.IDIASREC},
+        #{tipoGasto.IFLAGREFIN},
+        #{tipoGasto.IFLAGCONF},
+        #{tipoGasto.IFLAGVIG}
+    </select>
+
+    <select id="actualizarTipoGasto" resultType="map">
+        exec SAP_ForUpdTipGas_sp
+        #{tipoGasto.ITIPGASTID},
+        #{tipoGasto.CGASTDESC},
+        #{tipoGasto.IDIASREC},
+        #{tipoGasto.IFLAGREFIN},
+        #{tipoGasto.IFLAGCONF},
+        #{tipoGasto.IFLAGVIG}
+    </select>
+
+    <select id="eliminarTipoGasto" resultType="map">
+        exec SAP_ForDelTipGas_sp
+        #{tipoGasto.ITIPGASTID}
+    </select>
+
+    <select id="listarProceso" resultType="map">
+        exec SAP_ForLisOpcion_sp
+    </select>
+
+    <select id="listarPlantilla" resultType="map">
+        exec SAP_ForLisPlanti_sp
+        #{procesoId}
+    </select>
+
+    <select id="listarDetallePlantilla" resultType="map">
+        exec SAP_ForLisDetPla_sp
+        #{plantillaId}
+    </select>
+
+    <select id="obtenerVersionPlantilla" resultType="map">
+        exec SAP_ForVersPlant_sp
+        #{procesoId}
+    </select>
+
+
+    <select id="registrarPlantilla" resultType="map">
+        exec SAP_ForRegPlanti_sp
+        #{plantilla.iPROCESOID},
+        #{plantilla.iGRUPODOCI},
+        #{plantilla.iVERSION},
+        #{plantilla.iVIGENTE}
+    </select>
+
+    <select id="actualizarPlantilla" resultType="map">
+        exec SAP_ForUpdPlanti_sp
+        #{plantilla.iHISPLAID},
+        #{plantilla.iCAROPPLAI},
+        #{plantilla.iVIGENTE}
+    </select>
+
 
 </mapper>
