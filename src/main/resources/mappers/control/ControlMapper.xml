@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wydnex.sapchws.control.mappers.ControlMapper">
+
+    <select id="listarLlamadas" resultType="map">
+        exec SAP_ForLisLlaTel_sp
+    </select>
+
+    <select id="listarLlamadaPorId" resultType="map">
+        exec SAP_ForLisDetLla_sp
+        #{llamadaId}
+    </select>
+
+
+    <select id="registrarLlamada" resultType="map">
+        exec SAP_ForRegLlaTel_sp
+        #{llamada.codigo},
+        #{llamada.descripcion},
+        #{llamada.unidadMedida},
+        #{llamada.precioUnitario},
+        #{llamada.fechaDesde},
+        #{llamada.fechaHasta}
+    </select>
+
+    <select id="actualizarLlamada" resultType="map">
+        exec SAP_ForUpdLlaTel_sp
+        #{llamada.lamadaId},
+        #{llamada.codigo},
+        #{llamada.descripcion},
+        #{llamada.unidadMedida},
+        #{llamada.precioUnitario},
+        #{llamada.fechaDesde},
+        #{llamada.fechaHasta}
+    </select>
+
+</mapper>
