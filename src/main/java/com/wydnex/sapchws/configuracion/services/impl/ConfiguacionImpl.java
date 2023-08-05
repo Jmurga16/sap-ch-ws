@@ -139,7 +139,7 @@ public class ConfiguacionImpl implements ConfiguracionService {
         return configuracionMapper.listarPlantilla(procesoId);
     }
     @Override
-    public List<Map<String, String>> listarDetallePlantilla(Integer plantillaId) {
+    public Map<String, String> listarDetallePlantilla(Integer plantillaId) {
         return configuracionMapper.listarDetallePlantilla(plantillaId);
     }
     @Override

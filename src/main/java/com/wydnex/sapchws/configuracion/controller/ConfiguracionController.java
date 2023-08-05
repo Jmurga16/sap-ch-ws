@@ -148,7 +148,7 @@ public class ConfiguracionController {
     }
 
     @GetMapping(LISTAR_DETALLE_PLANTILLA)
-    public ResponseApi<List<Map<String, String>>> listarDetallePlantilla(@RequestParam("plantillaId") Integer plantillaId) {
+    public ResponseApi<Map<String, String>> listarDetallePlantilla(@RequestParam("plantillaId") Integer plantillaId) {
         return ResponseApi.build(configuracionService.listarDetallePlantilla(plantillaId));
     }
 

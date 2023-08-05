@@ -52,7 +52,7 @@ public interface ConfiguracionMapper {
     //region Mapper Plantilla
     List<Map<String, String>> listarProceso();
     List<Map<String, String>> listarPlantilla(@Param("procesoId") Integer procesoId);
-    List<Map<String, String>> listarDetallePlantilla(@Param("plantillaId") Integer plantillaId);
+    Map<String, String> listarDetallePlantilla(@Param("plantillaId") Integer plantillaId);
     List<Map<String, String>> obtenerVersionPlantilla(@Param("procesoId") Integer procesoId);
 
     Map<String, Integer> registrarPlantilla(@Param("plantilla") Map<String, String> plantilla);

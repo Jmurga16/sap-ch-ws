@@ -48,7 +48,7 @@ public interface ConfiguracionService {
     //region Service Plantilla
     List<Map<String, String>> listarProceso();
     List<Map<String, String>> listarPlantilla(Integer procesoId);
-    List<Map<String, String>> listarDetallePlantilla(Integer plantillaId);
+    Map<String, String> listarDetallePlantilla(Integer plantillaId);
     List<Map<String, String>> obtenerVersionPlantilla(Integer procesoId);
 
     Map<String, Integer> registrarPlantilla(Map<String, String> plantilla);
