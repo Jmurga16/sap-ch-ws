@@ -20,6 +20,14 @@ public interface ControlMapper {
 
     //endregion
 
+    //region Mapper Llamadas Telefonicas
 
+    List<Map<String, String>> listarLlamadasTelefonicas(@Param("fechaDesde") String fechaDesde, @Param("fechaHasta") String fechaHasta,
+                                             @Param("page") Integer page, @Param("limit") Integer limit);
+
+    Map<String, Integer> importExcelLlamadas(@Param("llamada") Map<String, String> llamada);
+
+    List<Map<String, Object>> exportExcelLlamadas(@Param("fechaDesde") String fechaDesde, @Param("fechaHasta") String fechaHasta);
+    //endregion
 
 }

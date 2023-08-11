@@ -3,7 +3,9 @@ package com.wydnex.sapchws.control.controller;
 import com.wydnex.sapchws.control.services.ControlService;
 import com.wydnex.sapchws.utils.model.ResponseApi;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -43,6 +45,21 @@ public class ControlController {
     }
     //endregion
 
+
+    //region Controllers Llamadas Telefonicas
+    @GetMapping(LISTAR_LLAMADAS_TELEFONICAS)
+    public ResponseApi<List<Map<String, String>>> listarLlamadasTelefonicas(@RequestParam("fechaDesde") String fechaDesde, @RequestParam("fechaHasta") String fechaHasta,
+                                                                 @RequestParam("page") Integer page, @RequestParam("limit") Integer limit) {
+        return ResponseApi.build(controlService.listarLlamadasTelefonicas(fechaDesde,fechaHasta,page,limit));
+    }
+
+    @PostMapping(IMPORTAR_EXCEL_LLAMADAS)
+    public ResponseApi<Map<String, Object>> importExcelLlamadas(@RequestBody MultipartFile file) throws IOException {
+
+        return ResponseApi.build(controlService.importExcelLlamadas(file));
+    }
+
+    //endregion
 
 }
 

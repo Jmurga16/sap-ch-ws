@@ -36,4 +36,37 @@
         #{llamada.fechaHasta}
     </select>
 
+
+    <select id="listarLlamadasTelefonicas" resultType="map">
+        exec SAP_ForLisLlamad_sp
+        #{fechaDesde},
+        #{fechaHasta},
+        #{page},
+        #{limit}
+    </select>
+
+    <select id="importExcelLlamadas" resultType="map">
+        exec SAP_ForRegLlamad_sp
+        #{llamada.codigoProceso},
+        #{llamada.periodo},
+        #{llamada.codigoPersona},
+        #{llamada.numeroTelefonico},
+        #{llamada.codigoRegistro},
+        #{llamada.tipoLlamada},
+        #{llamada.fechaLlamada},
+        #{llamada.horaLlamada},
+        #{llamada.duracionLlamada},
+        #{llamada.precioLlamada},
+        #{llamada.usuario},
+        #{llamada.codigoEstado},
+        #{llamada.ctipidella},
+        #{llamada.nombrePersona}
+    </select>
+
+    <select id="exportExcelLlamadas" resultType="map">
+        exec SAP_ForLisExpLla_sp
+        #{fechaDesde},
+        #{fechaHasta}
+    </select>
+
 </mapper>

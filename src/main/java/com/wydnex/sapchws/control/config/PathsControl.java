@@ -10,4 +10,10 @@ public class PathsControl {
     public static final String ACTUALIZAR_LLAMADA = "/actualizarLlamada";
     //endregion
 
+    //region Endpoints Llamadas Telefonicas
+    public static final String LISTAR_LLAMADAS_TELEFONICAS = "/listarLlamadasTelefonicas";
+    public static final String IMPORTAR_EXCEL_LLAMADAS = "/importExcelLlamadas";
+    public static final String EXPORTAR_EXCEL_LLAMADAS = "/exportExcelLlamadas";
+    //endregion
+
 }
