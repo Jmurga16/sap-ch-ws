@@ -19,9 +19,27 @@ public interface ControlService {
 
     //endregion
 
+
     //region Service Llamada Telefonica
     List<Map<String, String>> listarLlamadasTelefonicas(String fechaDesde, String fechaHasta, Integer page, Integer limit);
+
     Map<String, Object> importExcelLlamadas(MultipartFile file) throws IOException;
+
     List<Map<String, Object>> exportExcelLlamadas(String fechaDesde, String fechaHasta);
     //endregion
+
+
+    //region Service Autorización de llamada telefónica a clientes
+    List<Map<String, String>> listarAutorizacionLlamadas(Integer autorizado);
+
+    Map<String, String> obtenerDetallePorTelefono(String numeroTelefonico);
+
+    Map<String, String> obtenerAutorizacionPorId(Integer numeroTelefonico);
+
+    Map<String, Integer> registrarAutorizacionLlamada(Map<String, String> authLlamada);
+
+    Map<String, Integer> actualizarAutorizacionLlamada(Map<String, String> authLlamada);
+
+    //endregion
+
 }

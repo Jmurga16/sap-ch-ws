@@ -16,4 +16,11 @@ public class PathsControl {
     public static final String EXPORTAR_EXCEL_LLAMADAS = "/exportExcelLlamadas";
     //endregion
 
+    //region Endpoints Autorización de llamada telefónica a clientes
+    public static final String LISTAR_AUTORIZACION_LLAMADAS = "/listarAutorizacionLlamadas";
+    public static final String OBTENER_DETALLE_POR_TELEFONO = "/obtenerDetallePorTelefono";
+    public static final String OBTENER_AUTORIZACION_POR_ID = "/obtenerAutorizacionPorId";
+    public static final String REGISTRAR_AUTORIZACION_LLAMADA = "/registrarAutorizacionLlamada";
+    public static final String ACTUALIZAR_AUTORIZACION_LLAMADA = "/actualizarAutorizacionLlamada";
+    //endregion
 }

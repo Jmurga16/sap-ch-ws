@@ -14,7 +14,6 @@
         #{llamadaId}
     </select>
 
-
     <select id="registrarLlamada" resultType="map">
         exec SAP_ForRegLlaTel_sp
         #{llamada.codigo},
@@ -27,7 +26,7 @@
 
     <select id="actualizarLlamada" resultType="map">
         exec SAP_ForUpdLlaTel_sp
-        #{llamada.lamadaId},
+        #{llamada.llamadaId},
         #{llamada.codigo},
         #{llamada.descripcion},
         #{llamada.unidadMedida},
@@ -68,5 +67,47 @@
         #{fechaDesde},
         #{fechaHasta}
     </select>
+
+
+    <select id="listarAutorizacionLlamadas" resultType="map">
+        exec SAP_ForLisAutLla_sp
+        #{autorizado}
+    </select>
+
+    <select id="obtenerDetallePorTelefono" resultType="map">
+        exec SAP_ForDetAutTel_sp
+        #{numeroTelefonico}
+    </select>
+
+    <select id="obtenerAutorizacionPorId" resultType="map">
+        exec SAP_ForDetAutLla_sp
+        #{autorizacionId}
+    </select>
+
+    <select id="registrarAutorizacionLlamada" resultType="map">
+        exec SAP_ForRegAutLla_sp
+        #{authLlamada.tipoAutorizacion},
+        #{authLlamada.numeroTelefonico},
+        #{authLlamada.clienteId},
+        #{authLlamada.codigoCliente},
+        #{authLlamada.clasePersonaId},
+        #{authLlamada.nombre},
+        #{authLlamada.telefonoTipoId},
+        #{authLlamada.telefonoDestinoId},
+        #{authLlamada.detalleAutorizacion},
+        #{authLlamada.autorizacionCliente},
+        #{authLlamada.codigoUsuario}
+    </select>
+
+    <select id="actualizarAutorizacionLlamada" resultType="map">
+        exec SAP_ForUpdAutLla_sp
+        #{authLlamada.autorizacionId},
+        #{authLlamada.tipoAutorizacion},
+        #{authLlamada.telefonoTipoId},
+        #{authLlamada.telefonoDestinoId},
+        #{authLlamada.detalleAutorizacion},
+        #{authLlamada.autorizacionCliente}
+    </select>
+
 
 </mapper>

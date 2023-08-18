@@ -48,9 +48,8 @@ public class ControlController {
 
     //region Controllers Llamadas Telefonicas
     @GetMapping(LISTAR_LLAMADAS_TELEFONICAS)
-    public ResponseApi<List<Map<String, String>>> listarLlamadasTelefonicas(@RequestParam("fechaDesde") String fechaDesde, @RequestParam("fechaHasta") String fechaHasta,
-                                                                 @RequestParam("page") Integer page, @RequestParam("limit") Integer limit) {
-        return ResponseApi.build(controlService.listarLlamadasTelefonicas(fechaDesde,fechaHasta,page,limit));
+    public ResponseApi<List<Map<String, String>>> listarLlamadasTelefonicas(@RequestParam("fechaDesde") String fechaDesde, @RequestParam("fechaHasta") String fechaHasta, @RequestParam("page") Integer page, @RequestParam("limit") Integer limit) {
+        return ResponseApi.build(controlService.listarLlamadasTelefonicas(fechaDesde, fechaHasta, page, limit));
     }
 
     @PostMapping(IMPORTAR_EXCEL_LLAMADAS)
@@ -59,6 +58,34 @@ public class ControlController {
         return ResponseApi.build(controlService.importExcelLlamadas(file));
     }
 
+    //endregion
+
+
+    //region Controllers Autorización de llamada telefónica a clientes
+    @GetMapping(LISTAR_AUTORIZACION_LLAMADAS)
+    public ResponseApi<List<Map<String, String>>> listarAutorizacionLlamadas(@RequestParam("autorizado") Integer autorizado) {
+        return ResponseApi.build(controlService.listarAutorizacionLlamadas(autorizado));
+    }
+
+    @GetMapping(OBTENER_DETALLE_POR_TELEFONO)
+    public ResponseApi<Map<String, String>> obtenerDetallePorTelefono(@RequestParam("numeroTelefonico") String numeroTelefonico) {
+        return ResponseApi.build(controlService.obtenerDetallePorTelefono(numeroTelefonico));
+    }
+
+    @GetMapping(OBTENER_AUTORIZACION_POR_ID)
+    public ResponseApi<Map<String, String>> obtenerAutorizacionPorId(@RequestParam("autorizacionId") Integer autorizacionId) {
+        return ResponseApi.build(controlService.obtenerAutorizacionPorId(autorizacionId));
+    }
+
+    @PostMapping(REGISTRAR_AUTORIZACION_LLAMADA)
+    public ResponseApi<Map<String, Integer>> registrarAutorizacionLlamada(@RequestBody Map<String, String> authLlamada) {
+        return ResponseApi.build(controlService.registrarAutorizacionLlamada(authLlamada));
+    }
+
+    @PostMapping(ACTUALIZAR_AUTORIZACION_LLAMADA)
+    public ResponseApi<Map<String, Integer>> actualizarAutorizacionLlamada(@RequestBody Map<String, String> authLlamada) {
+        return ResponseApi.build(controlService.actualizarAutorizacionLlamada(authLlamada));
+    }
     //endregion
 
 }
