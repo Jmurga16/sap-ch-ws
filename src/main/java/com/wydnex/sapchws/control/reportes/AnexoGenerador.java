@@ -87,7 +87,7 @@ public class AnexoGenerador implements ReporteInterface {
 
         List<Object[]> list = parametrosReporte.getFilas().get("data");
         if (list.size() > 0) {
-            int fil_num = 4;
+            int fil_num = 3;
             for (Object[] fil : list) {
                 Row row = sheet.createRow(fil_num);
                 int cellNum = 0;

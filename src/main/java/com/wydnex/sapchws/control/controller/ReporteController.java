@@ -45,4 +45,20 @@ public class ReporteController {
                 .body(anexoGenerador);
     }
 
+
+    @GetMapping(EXPORTAR_EXCEL_TELEFONOS_PERSONAL)
+    public ResponseEntity<Resource> exportExcelTelefonosPersonal(@RequestParam("vigente") Integer vigente) {
+
+        Resource anexoGenerador = reporteService.generarExcelTelefonosPersonal(vigente);
+
+        return ResponseEntity.ok()
+                .headers(httpHeaders -> {
+                    httpHeaders.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + "FER108_Anexo.xlsx");
+                    httpHeaders.add("ms-filename", "");
+                })
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(anexoGenerador);
+    }
+
+
 }

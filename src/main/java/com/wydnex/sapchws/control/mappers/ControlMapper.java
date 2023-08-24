@@ -45,4 +45,32 @@ public interface ControlMapper {
 
     //endregion
 
+
+    //region Mapper Autorización general de llamada telefónica
+    List<Map<String, String>> listarAutorizacionGeneralLlamadas(@Param("autorizado") Integer autorizado);
+
+    Map<String, String> obtenerDetalleNumeroTelefonico(@Param("numeroTelefonico") String numeroTelefonico);
+
+    Map<String, String> obtenerAutorizacionGeneralPorId(@Param("autorizacionId") Integer autorizacionId);
+
+    Map<String, Integer> registrarAutorizacionGeneralLlamada(@Param("authLlamada") Map<String, String> authGeneralLlamada);
+
+    Map<String, Integer> actualizarAutorizacionGeneralLlamada(@Param("authLlamada") Map<String, String> authGeneralLlamada);
+
+    //endregion
+
+    //region Mapper Registro de llamadas telefonicas
+    List<Map<String, String>> listarLlamadaTipo();
+
+    List<Map<String, String>> listarLlamadasPorUsuario(@Param("usuario") String usuario, @Param("page") Integer page, @Param("limit") Integer limit);
+
+    Map<String, String>  obtenerDetalleLlamadaTelefonica(@Param("llamadaId") Integer llamadaId );
+
+    Map<String, String>  obtenerDatosTelefono(@Param("numeroTelefonico") String numeroTelefonico);
+
+    Map<String, Integer> registrarLlamadaTelefonica(@Param("llamada") Map<String, String> llamada);
+
+    Map<String, Integer> actualizarLlamadaTelefonica(@Param("llamada") Map<String, String> llamada);
+    List<Map<String, Object>> exportExcelTelefonosPersonal(@Param("vigente") Integer vigente);
+    //endregion
 }

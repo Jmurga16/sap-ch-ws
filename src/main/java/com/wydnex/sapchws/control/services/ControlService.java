@@ -42,4 +42,35 @@ public interface ControlService {
 
     //endregion
 
+
+    //region Service Autorización general de llamada telefónica
+    List<Map<String, String>> listarAutorizacionGeneralLlamadas(Integer autorizado);
+
+    Map<String, String> obtenerDetalleNumeroTelefonico(String numeroTelefonico);
+
+    Map<String, String> obtenerAutorizacionGeneralPorId(Integer numeroTelefonico);
+
+    Map<String, Integer> registrarAutorizacionGeneralLlamada(Map<String, String> authGeneralLlamada);
+
+    Map<String, Integer> actualizarAutorizacionGeneralLlamada(Map<String, String> authGeneralLlamada);
+
+    //endregion
+
+    //region Service Registro de llamadas telefonicas
+    List<Map<String, String>> listarLlamadaTipo();
+
+    List<Map<String, String>> listarLlamadasPorUsuario(String usuario, Integer page, Integer limit);
+
+    Map<String, String> obtenerDetalleLlamadaTelefonica(Integer llamadaId);
+
+    Map<String, String> obtenerDatosTelefono(String numeroTelefonico);
+
+    Map<String, Integer> registrarLlamadaTelefonica(Map<String, String> llamada);
+
+    Map<String, Integer> actualizarLlamadaTelefonica(Map<String, String> llamada);
+
+    List<Map<String, Object>> exportExcelTelefonosPersonal(Integer vigente);
+
+    //endregion
+
 }

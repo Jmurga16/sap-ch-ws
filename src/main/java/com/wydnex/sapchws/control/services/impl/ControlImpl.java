@@ -161,4 +161,83 @@ public class ControlImpl implements ControlService {
 
     //endregion
 
+
+    //region Implementacion Autorización general de llamada telefónica
+    @Override
+    public List<Map<String, String>> listarAutorizacionGeneralLlamadas(Integer autorizado) {
+        return controlMapper.listarAutorizacionGeneralLlamadas(autorizado);
+    }
+
+    @Override
+    public Map<String, String> obtenerDetalleNumeroTelefonico(String numeroTelefonico) {
+        return controlMapper.obtenerDetalleNumeroTelefonico(numeroTelefonico);
+    }
+
+    @Override
+    public Map<String, String> obtenerAutorizacionGeneralPorId(Integer autorizacionId) {
+        return controlMapper.obtenerAutorizacionGeneralPorId(autorizacionId);
+    }
+
+
+    @Override
+    public Map<String, Integer> registrarAutorizacionGeneralLlamada(Map<String, String> authGeneralLlamada) {
+        Map<String, Integer> result = controlMapper.registrarAutorizacionGeneralLlamada(authGeneralLlamada);
+
+        if (result.get("autorizacionId") == 0) {
+            throw new BusinessException("Numero Telefónico ya registrado anteriormente");
+        }
+        return result;
+    }
+
+    @Override
+    public Map<String, Integer> actualizarAutorizacionGeneralLlamada(Map<String, String> authGeneralLlamada) {
+        Map<String, Integer> result = controlMapper.actualizarAutorizacionGeneralLlamada(authGeneralLlamada);
+
+        return result;
+    }
+
+
+    //endregion
+
+
+    //region Implementacion Registro de llamadas telefonicas
+    @Override
+    public List<Map<String, String>> listarLlamadaTipo() {
+        return controlMapper.listarLlamadaTipo();
+    }
+
+    @Override
+    public List<Map<String, String>> listarLlamadasPorUsuario( String usuario, Integer page, Integer limit) {
+        return controlMapper.listarLlamadasPorUsuario( usuario, page, limit);
+    }
+
+    @Override
+    public Map<String, String> obtenerDetalleLlamadaTelefonica(Integer llamadaId) {
+        return controlMapper.obtenerDetalleLlamadaTelefonica(llamadaId);
+    }
+
+    @Override
+    public Map<String, String> obtenerDatosTelefono(String numeroTelefonico) {
+        return controlMapper.obtenerDatosTelefono(numeroTelefonico);
+    }
+
+    @Override
+    public Map<String, Integer> registrarLlamadaTelefonica(Map<String, String> llamada) {
+        Map<String, Integer> result = controlMapper.registrarLlamadaTelefonica(llamada);
+        return result;
+    }
+
+    @Override
+    public Map<String, Integer> actualizarLlamadaTelefonica(Map<String, String> llamada) {
+        Map<String, Integer> result = controlMapper.actualizarLlamadaTelefonica(llamada);
+        return result;
+    }
+
+    @Override
+    public List<Map<String, Object>> exportExcelTelefonosPersonal(Integer vigente) {
+        return controlMapper.exportExcelTelefonosPersonal(vigente);
+    }
+    //endregion
+
+
 }

@@ -110,4 +110,102 @@
     </select>
 
 
+    <select id="listarAutorizacionGeneralLlamadas" resultType="map">
+        exec SAP_ForAutGenLla_sp
+        #{autorizado}
+    </select>
+
+    <select id="obtenerDetalleNumeroTelefonico" resultType="map">
+        exec SAP_ForAutGenTel_sp
+        #{numeroTelefonico}
+    </select>
+
+    <select id="obtenerAutorizacionGeneralPorId" resultType="map">
+        exec SAP_ForDetAutGen_sp
+        #{autorizacionId}
+    </select>
+
+    <select id="registrarAutorizacionGeneralLlamada" resultType="map">
+        exec SAP_ForRegAutGen_sp
+        #{authLlamada.tipoAutorizacion},
+        #{authLlamada.numeroTelefonico},
+        #{authLlamada.clienteId},
+        #{authLlamada.codigoCliente},
+        #{authLlamada.clasePersonaId},
+        #{authLlamada.nombre},
+        #{authLlamada.telefonoTipoId},
+        #{authLlamada.telefonoDestinoId},
+        #{authLlamada.detalleAutorizacion},
+        #{authLlamada.autorizacionGeneral},
+        #{authLlamada.codigoUsuario}
+    </select>
+
+    <select id="actualizarAutorizacionGeneralLlamada" resultType="map">
+        exec SAP_ForUpdAutGen_sp
+        #{authLlamada.autorizacionId},
+        #{authLlamada.tipoAutorizacion},
+        #{authLlamada.telefonoTipoId},
+        #{authLlamada.telefonoDestinoId},
+        #{authLlamada.detalleAutorizacion},
+        #{authLlamada.autorizacionGeneral}
+    </select>
+
+
+
+
+    <select id="listarLlamadaTipo" resultType="map">
+        exec SAP_ForLisLlaTip_sp
+    </select>
+
+
+    <select id="listarLlamadasPorUsuario" resultType="map">
+        exec SAP_ForLisLlaUsr_sp
+        #{usuario},
+        #{page},
+        #{limit}
+    </select>
+
+
+    <select id="obtenerDetalleLlamadaTelefonica" resultType="map">
+        exec SAP_ForDetRegLla_sp
+        #{llamadaId}
+    </select>
+
+    <select id="obtenerDatosTelefono" resultType="map">
+        exec SAP_ForDetNumTel_sp
+        #{numeroTelefonico}
+    </select>
+
+    <select id="registrarLlamadaTelefonica" resultType="map">
+        exec SAP_ForRegLlaUsr_sp
+        #{llamada.numeroTelefonico},
+        #{llamada.ubicacion},
+        #{llamada.llamadaTipoId},
+        #{llamada.telefonoTipoId},
+        #{llamada.familiaInstitucion},
+        #{llamada.telefonoDestinoId},
+        #{llamada.motivo},
+        #{llamada.vigente},
+        #{llamada.telefonoClienteId},
+        #{llamada.telefonoGeneralId},
+        #{llamada.codigoUsuario}
+    </select>
+
+    <select id="actualizarLlamadaTelefonica" resultType="map">
+        exec SAP_ForUpdLlaUsr_sp
+        #{llamada.llamadaId},
+        #{llamada.ubicacion},
+        #{llamada.llamadaTipoId},
+        #{llamada.familiaInstitucion},
+        #{llamada.motivo},
+        #{llamada.vigente}
+    </select>
+
+    <select id="exportExcelTelefonosPersonal" resultType="map">
+        exec SAP_ForLisTelPer_sp
+        #{vigente}
+    </select>
+
+
+
 </mapper>

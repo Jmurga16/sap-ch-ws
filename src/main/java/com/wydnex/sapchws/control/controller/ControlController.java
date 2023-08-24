@@ -88,5 +88,66 @@ public class ControlController {
     }
     //endregion
 
+
+    //region Controllers Autorización general de llamada telefónica
+    @GetMapping(LISTAR_AUT_GENERAL_LLAMADAS)
+    public ResponseApi<List<Map<String, String>>> listarAutorizacionGeneralLlamadas(@RequestParam("autorizado") Integer autorizado) {
+        return ResponseApi.build(controlService.listarAutorizacionGeneralLlamadas(autorizado));
+    }
+
+    @GetMapping(OBTENER_DETALLE_NUMERO_TELEFONICO)
+    public ResponseApi<Map<String, String>> obtenerDetalleNumeroTelefonico(@RequestParam("numeroTelefonico") String numeroTelefonico) {
+        return ResponseApi.build(controlService.obtenerDetalleNumeroTelefonico(numeroTelefonico));
+    }
+
+    @GetMapping(OBTENER_AUT_GENERAL_LLAMADA_POR_ID)
+    public ResponseApi<Map<String, String>> obtenerAutorizacionGeneralPorId(@RequestParam("autorizacionId") Integer autorizacionId) {
+        return ResponseApi.build(controlService.obtenerAutorizacionGeneralPorId(autorizacionId));
+    }
+
+    @PostMapping(REGISTRAR_AUT_GENERAL_LLAMADA)
+    public ResponseApi<Map<String, Integer>> registrarAutorizacionGeneralLlamada(@RequestBody Map<String, String> authGeneralLlamada) {
+        return ResponseApi.build(controlService.registrarAutorizacionGeneralLlamada(authGeneralLlamada));
+    }
+
+    @PostMapping(ACTUALIZAR_AUT_GENERAL_LLAMADA)
+    public ResponseApi<Map<String, Integer>> actualizarAutorizacionGeneralLlamada(@RequestBody Map<String, String> authGeneralLlamada) {
+        return ResponseApi.build(controlService.actualizarAutorizacionGeneralLlamada(authGeneralLlamada));
+    }
+    //endregion
+
+
+    //region Controllers Registro de llamadas telefonicas
+    @GetMapping(LISTAR_LLAMADA_TIPO)
+    public ResponseApi<List<Map<String, String>>> listarLlamadaTipo() {
+        return ResponseApi.build(controlService.listarLlamadaTipo());
+    }
+
+    @GetMapping(LISTAR_LLAMADAS_POR_USUARIO)
+    public ResponseApi<List<Map<String, String>>> listarLlamadasPorUsuario(@RequestParam("usuario") String usuario, @RequestParam("page") Integer page, @RequestParam("limit") Integer limit) {
+        return ResponseApi.build(controlService.listarLlamadasPorUsuario(usuario, page, limit));
+    }
+
+    @GetMapping(OBTENER_DETALLE_LLAMADA_TELEFONICA)
+    public ResponseApi<Map<String, String>> obtenerDetalleLlamadaTelefonica(@RequestParam("llamadaId") Integer llamadaId) {
+        return ResponseApi.build(controlService.obtenerDetalleLlamadaTelefonica(llamadaId));
+    }
+
+    @GetMapping(OBTENER_DATOS_TELEFONO)
+    public ResponseApi<Map<String, String>> obtenerDatosTelefono(@RequestParam("numeroTelefonico") String numeroTelefonico) {
+        return ResponseApi.build(controlService.obtenerDatosTelefono(numeroTelefonico));
+    }
+
+    @PostMapping(REGISTRAR_LLAMADA_TELEFONICA)
+    public ResponseApi<Map<String, Integer>> registrarLlamadaTelefonica(@RequestBody Map<String, String> llamada) {
+        return ResponseApi.build(controlService.registrarLlamadaTelefonica(llamada));
+    }
+
+    @PostMapping(ACTUALIZAR_LLAMADA_TELEFONICA)
+    public ResponseApi<Map<String, Integer>> actualizarLlamadaTelefonica(@RequestBody Map<String, String> llamada) {
+        return ResponseApi.build(controlService.actualizarLlamadaTelefonica(llamada));
+    }
+//endregion
+
 }
 
