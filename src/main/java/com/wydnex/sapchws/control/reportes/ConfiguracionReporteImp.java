@@ -11,7 +11,7 @@ import java.util.Map;
 @Service
 public class ConfiguracionReporteImp implements ConfiguracionReporteService {
 
-    private ControlService controlService;
+    private final ControlService controlService;
 
     public ConfiguracionReporteImp(ControlService controlService) {
         this.controlService = controlService;
@@ -27,6 +27,12 @@ public class ConfiguracionReporteImp implements ConfiguracionReporteService {
     public Resource generarExcelTelefonosPersonal(Integer vigente) {
         List<Map<String, Object>> mapList = controlService.exportExcelTelefonosPersonal(vigente);
         return new TelefonosPersonalReporte(mapList).generarReporte();
+    }
+
+    @Override
+    public Resource generarExcelPersonalExonerado(Integer vigente) {
+        List<Map<String, Object>> mapList = controlService.exportExcelPersonalExonerado(vigente);
+        return new PersonalExoneradoReporte(mapList).generarReporte();
     }
 
 }

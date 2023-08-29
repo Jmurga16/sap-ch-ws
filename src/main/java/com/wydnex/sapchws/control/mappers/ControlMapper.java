@@ -59,18 +59,39 @@ public interface ControlMapper {
 
     //endregion
 
+
     //region Mapper Registro de llamadas telefonicas
     List<Map<String, String>> listarLlamadaTipo();
 
     List<Map<String, String>> listarLlamadasPorUsuario(@Param("usuario") String usuario, @Param("page") Integer page, @Param("limit") Integer limit);
 
-    Map<String, String>  obtenerDetalleLlamadaTelefonica(@Param("llamadaId") Integer llamadaId );
+    Map<String, String> obtenerDetalleLlamadaTelefonica(@Param("llamadaId") Integer llamadaId);
 
-    Map<String, String>  obtenerDatosTelefono(@Param("numeroTelefonico") String numeroTelefonico);
+    Map<String, String> obtenerDatosTelefono(@Param("numeroTelefonico") String numeroTelefonico);
 
     Map<String, Integer> registrarLlamadaTelefonica(@Param("llamada") Map<String, String> llamada);
 
     Map<String, Integer> actualizarLlamadaTelefonica(@Param("llamada") Map<String, String> llamada);
+
     List<Map<String, Object>> exportExcelTelefonosPersonal(@Param("vigente") Integer vigente);
     //endregion
+
+
+    //region Mapper Personal exonerado
+    List<Map<String, String>> listarPersonalExonerado(@Param("vigente") Integer vigente);
+
+    Map<String, String> obtenerPersonalPorCodigoUsuario(@Param("codigoUsuario") String codigoUsuario);
+
+    Map<String, String> obtenerDetallePersonalExonerado(@Param("personalExoneradoId") Integer personalExoneradoId);
+
+    Map<String, Integer> registrarPersonalExonerado(@Param("personalExonerado") Map<String, String> personalExonerado);
+
+    Map<String, Integer> actualizarPersonalExonerado(@Param("personalExonerado") Map<String, String> personalExonerado);
+
+    Map<String, Integer> anularPersonalExonerado(@Param("personalExonerado") Map<String, String> personalExonerado);
+    List<Map<String, Object>> exportExcelPersonalExonerado(@Param("vigente") Integer vigente);
+
+    //endregion
+
+
 }

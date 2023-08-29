@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Service
 public class ControlImpl implements ControlService {
-    private ControlMapper controlMapper;
+    private final ControlMapper controlMapper;
 
     public ControlImpl(ControlMapper controlMapper) {
         this.controlMapper = controlMapper;
@@ -239,5 +239,47 @@ public class ControlImpl implements ControlService {
     }
     //endregion
 
+
+    //region Implementacion Personal exonerado
+    @Override
+    public List<Map<String, String>> listarPersonalExonerado(Integer vigente) {
+        return controlMapper.listarPersonalExonerado(vigente);
+    }
+
+    @Override
+    public Map<String, String> obtenerPersonalPorCodigoUsuario(String codigoUsuario) {
+        return controlMapper.obtenerPersonalPorCodigoUsuario(codigoUsuario);
+    }
+
+    @Override
+    public Map<String, String> obtenerDetallePersonalExonerado(Integer personalExoneradoId) {
+        return controlMapper.obtenerDetallePersonalExonerado(personalExoneradoId);
+    }
+
+    @Override
+    public Map<String, Integer> registrarPersonalExonerado(Map<String, String> personalExonerado) {
+        Map<String, Integer> result = controlMapper.registrarPersonalExonerado(personalExonerado);
+        return result;
+    }
+
+    @Override
+    public Map<String, Integer> actualizarPersonalExonerado(Map<String, String> personalExonerado) {
+        Map<String, Integer> result = controlMapper.actualizarPersonalExonerado(personalExonerado);
+        return result;
+    }
+
+    @Override
+    public Map<String, Integer> anularPersonalExonerado(Map<String, String> personalExonerado) {
+        Map<String, Integer> result = controlMapper.anularPersonalExonerado(personalExonerado);
+        return result;
+    }
+
+    @Override
+    public List<Map<String, Object>> exportExcelPersonalExonerado(Integer vigente) {
+        return controlMapper.exportExcelPersonalExonerado(vigente);
+    }
+    //endregion
+
+    //endregion
 
 }

@@ -56,6 +56,7 @@ public interface ControlService {
 
     //endregion
 
+
     //region Service Registro de llamadas telefonicas
     List<Map<String, String>> listarLlamadaTipo();
 
@@ -70,6 +71,24 @@ public interface ControlService {
     Map<String, Integer> actualizarLlamadaTelefonica(Map<String, String> llamada);
 
     List<Map<String, Object>> exportExcelTelefonosPersonal(Integer vigente);
+
+    //endregion
+
+
+    //region Service Personal exonerado
+    List<Map<String, String>> listarPersonalExonerado(Integer vigente);
+
+    Map<String, String> obtenerPersonalPorCodigoUsuario(String codigoUsuario);
+
+    Map<String, String> obtenerDetallePersonalExonerado(Integer personalExoneradoId);
+
+    Map<String, Integer> registrarPersonalExonerado(Map<String, String> personalExonerado);
+
+    Map<String, Integer> actualizarPersonalExonerado(Map<String, String> personalExonerado);
+
+    Map<String, Integer> anularPersonalExonerado(Map<String, String> personalExonerado);
+
+    List<Map<String, Object>> exportExcelPersonalExonerado(Integer vigente);
 
     //endregion
 

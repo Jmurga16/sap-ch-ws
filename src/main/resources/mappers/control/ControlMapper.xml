@@ -151,8 +151,6 @@
     </select>
 
 
-
-
     <select id="listarLlamadaTipo" resultType="map">
         exec SAP_ForLisLlaTip_sp
     </select>
@@ -207,5 +205,51 @@
     </select>
 
 
+    <select id="listarPersonalExonerado" resultType="map">
+        exec SAP_ForLisPerExo_sp
+        #{vigente}
+    </select>
 
+
+    <select id="obtenerPersonalPorCodigoUsuario" resultType="map">
+        exec SAP_ForLisPerCod_sp
+        #{codigoUsuario}
+    </select>
+
+
+    <select id="obtenerDetallePersonalExonerado" resultType="map">
+        exec SAP_ForDetPerExo_sp
+        #{personalExoneradoId}
+    </select>
+
+
+    <select id="registrarPersonalExonerado" resultType="map">
+        exec SAP_ForRegPerExo_sp
+        #{personalExonerado.codigoUsuarioExonerado},
+        #{personalExonerado.nombreUsuarioExonerado},
+        #{personalExonerado.fechaInicio},
+        #{personalExonerado.fechaFin},
+        #{personalExonerado.estado},
+        #{personalExonerado.motivo},
+        #{personalExonerado.usuarioRegistro}
+    </select>
+
+    <select id="actualizarPersonalExonerado" resultType="map">
+        exec SAP_ForUpdPerExo_sp
+        #{personalExonerado.personalExoneradoId},
+        #{personalExonerado.fechaInicio},
+        #{personalExonerado.fechaFin},
+        #{personalExonerado.estado},
+        #{personalExonerado.motivo}
+    </select>
+
+    <select id="anularPersonalExonerado" resultType="map">
+        exec SAP_ForDelPerExo_sp
+        #{personalExonerado.personalExoneradoId}
+    </select>
+
+    <select id="exportExcelPersonalExonerado" resultType="map">
+        exec SAP_ForExpPerExo_sp
+        #{vigente}
+    </select>
 </mapper>

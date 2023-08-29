@@ -149,5 +149,38 @@ public class ControlController {
     }
 //endregion
 
+
+    //region Controllers Personal exonerado
+    @GetMapping(LISTAR_PERSONAL_EXONERADO)
+    public ResponseApi<List<Map<String, String>>> listarPersonalExonerado(@RequestParam("vigente") Integer vigente) {
+        return ResponseApi.build(controlService.listarPersonalExonerado(vigente));
+    }
+
+    @GetMapping(OBTENER_PERSONAL_POR_CODIGO_USUARIO)
+    public ResponseApi<Map<String, String>> obtenerPersonalPorCodigoUsuario(@RequestParam("codigoUsuario") String codigoUsuario) {
+        return ResponseApi.build(controlService.obtenerPersonalPorCodigoUsuario(codigoUsuario));
+    }
+
+    @GetMapping(OBTENER_DETALLE_PERSONAL_EXONERADO)
+    public ResponseApi<Map<String, String>> obtenerDetallePersonalExonerado(@RequestParam("personalExoneradoId") Integer personalExoneradoId) {
+        return ResponseApi.build(controlService.obtenerDetallePersonalExonerado(personalExoneradoId));
+    }
+
+    @PostMapping(REGISTRAR_PERSONAL_EXONERADO)
+    public ResponseApi<Map<String, Integer>> registrarPersonalExonerado(@RequestBody Map<String, String> personalExonerado) {
+        return ResponseApi.build(controlService.registrarPersonalExonerado(personalExonerado));
+    }
+
+    @PostMapping(ACTUALIZAR_PERSONAL_EXONERADO)
+    public ResponseApi<Map<String, Integer>> actualizarPersonalExonerado(@RequestBody Map<String, String> personalExonerado) {
+        return ResponseApi.build(controlService.actualizarPersonalExonerado(personalExonerado));
+    }
+
+    @PostMapping(ANULAR_PERSONAL_EXONERADO)
+    public ResponseApi<Map<String, Integer>> anularPersonalExonerado(@RequestBody Map<String, String> personalExonerado) {
+        return ResponseApi.build(controlService.anularPersonalExonerado(personalExonerado));
+    }
+
+//endregion
 }
 

@@ -41,4 +41,14 @@ public class PathsControl {
     public static final String ACTUALIZAR_LLAMADA_TELEFONICA = "/actualizarLlamadaTelefonica";
     public static final String EXPORTAR_EXCEL_TELEFONOS_PERSONAL = "/exportExcelTelefonosPersonal";
     //endregion
+
+    //region Endpoints Registro de Personal Exonerado
+    public static final String LISTAR_PERSONAL_EXONERADO = "/listarPersonalExonerado";
+    public static final String OBTENER_PERSONAL_POR_CODIGO_USUARIO = "/obtenerPersonalPorCodigoUsuario";
+    public static final String OBTENER_DETALLE_PERSONAL_EXONERADO = "/obtenerDetallePersonalExonerado";
+    public static final String REGISTRAR_PERSONAL_EXONERADO = "/registrarPersonalExonerado";
+    public static final String ACTUALIZAR_PERSONAL_EXONERADO = "/actualizarPersonalExonerado";
+    public static final String ANULAR_PERSONAL_EXONERADO = "/anularPersonalExonerado";
+    public static final String EXPORTAR_EXCEL_PERSONAL_EXONERADO = "/exportExcelPersonalExonerado";
+    //endregion
 }

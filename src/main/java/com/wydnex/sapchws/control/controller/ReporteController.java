@@ -23,7 +23,7 @@ import static com.wydnex.sapchws.utils.config.PathsUtil.*;
 public class ReporteController {
 
 
-    private ConfiguracionReporteService reporteService;
+    private final ConfiguracionReporteService reporteService;
 
 
     public ReporteController(ConfiguracionReporteService reporteService) {
@@ -54,6 +54,20 @@ public class ReporteController {
         return ResponseEntity.ok()
                 .headers(httpHeaders -> {
                     httpHeaders.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + "FER108_Anexo.xlsx");
+                    httpHeaders.add("ms-filename", "");
+                })
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(anexoGenerador);
+    }
+
+    @GetMapping(EXPORTAR_EXCEL_PERSONAL_EXONERADO)
+    public ResponseEntity<Resource> exportExcelPersonalExonerado(@RequestParam("vigente") Integer vigente) {
+
+        Resource anexoGenerador = reporteService.generarExcelPersonalExonerado(vigente);
+
+        return ResponseEntity.ok()
+                .headers(httpHeaders -> {
+                    httpHeaders.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + "FER105_Anexo.xlsx");
                     httpHeaders.add("ms-filename", "");
                 })
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
