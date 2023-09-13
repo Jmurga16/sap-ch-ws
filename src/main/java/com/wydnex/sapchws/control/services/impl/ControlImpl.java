@@ -23,7 +23,7 @@ public class ControlImpl implements ControlService {
         this.controlMapper = controlMapper;
     }
 
-    //region Implementacion Llamada
+    //region Implementacion Precio de llamadas telefónicas - FER102
     @Override
     public List<Map<String, String>> listarLlamadas() {
         return controlMapper.listarLlamadas();
@@ -63,7 +63,7 @@ public class ControlImpl implements ControlService {
     //endregion
 
 
-    //region Implementacion Llamada Telefonica
+    //region Implementacion Importar llamadas telefónicas - FER103
     @Override
     public List<Map<String, String>> listarLlamadasTelefonicas(String fechaDesde, String fechaHasta, Integer page, Integer limit) {
         return controlMapper.listarLlamadasTelefonicas(fechaDesde, fechaHasta, page, limit);
@@ -124,7 +124,7 @@ public class ControlImpl implements ControlService {
     //endregion
 
 
-    //region Implementacion Autorización de llamada telefónica a clientes
+    //region Implementacion Autorización de llamada telefónica a clientes - FER109
     @Override
     public List<Map<String, String>> listarAutorizacionLlamadas(Integer autorizado) {
         return controlMapper.listarAutorizacionLlamadas(autorizado);
@@ -162,7 +162,7 @@ public class ControlImpl implements ControlService {
     //endregion
 
 
-    //region Implementacion Autorización general de llamada telefónica
+    //region Implementacion Autorización general de llamada telefónica - FER110
     @Override
     public List<Map<String, String>> listarAutorizacionGeneralLlamadas(Integer autorizado) {
         return controlMapper.listarAutorizacionGeneralLlamadas(autorizado);
@@ -200,15 +200,15 @@ public class ControlImpl implements ControlService {
     //endregion
 
 
-    //region Implementacion Registro de llamadas telefonicas
+    //region Implementacion Registro de llamadas telefonicas - FER108
     @Override
     public List<Map<String, String>> listarLlamadaTipo() {
         return controlMapper.listarLlamadaTipo();
     }
 
     @Override
-    public List<Map<String, String>> listarLlamadasPorUsuario( String usuario, Integer page, Integer limit) {
-        return controlMapper.listarLlamadasPorUsuario( usuario, page, limit);
+    public List<Map<String, String>> listarLlamadasPorUsuario(String usuario, Integer page, Integer limit) {
+        return controlMapper.listarLlamadasPorUsuario(usuario, page, limit);
     }
 
     @Override
@@ -223,7 +223,12 @@ public class ControlImpl implements ControlService {
 
     @Override
     public Map<String, Integer> registrarLlamadaTelefonica(Map<String, String> llamada) {
+
         Map<String, Integer> result = controlMapper.registrarLlamadaTelefonica(llamada);
+
+        if (result.get("llamadaId") == 0) {
+            throw new BusinessException("Numero Telefónico ya registrado anteriormente");
+        }
         return result;
     }
 
@@ -240,7 +245,7 @@ public class ControlImpl implements ControlService {
     //endregion
 
 
-    //region Implementacion Personal exonerado
+    //region Implementacion Personal exonerado - FER105
     @Override
     public List<Map<String, String>> listarPersonalExonerado(Integer vigente) {
         return controlMapper.listarPersonalExonerado(vigente);
@@ -280,6 +285,36 @@ public class ControlImpl implements ControlService {
     }
     //endregion
 
+
+    //region Implementacion Costo de llamadas telefónicas - FER104
+    @Override
+    public List<Map<String, String>> listarLlamadasPendientes(String fechaDesde, String fechaHasta) {
+        return controlMapper.listarLlamadasPendientes(fechaDesde, fechaHasta);
+    }
+
+    @Override
+    public List<Map<String, String>> listarCostoPorLlamada() {
+        return controlMapper.listarCostoPorLlamada();
+    }
+
+    @Override
+    public Map<String, String> obtenerCantidadLlamadas(String fechaDesde, String fechaHasta) {
+        return controlMapper.obtenerCantidadLlamadas(fechaDesde, fechaHasta);
+    }
+
+    @Override
+    public Map<String, Integer> procesarLlamadas(Map<String, String> request) {
+
+        request.put("usuarioRegistro", "user");
+
+        //UserDetailsCustom user = (UserDetailsCustom) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        //codigoUsuario= user.getCodigo();
+
+        Map<String, Integer> result = controlMapper.procesarLlamadas(request);
+        return result;
+    }
+
     //endregion
+
 
 }

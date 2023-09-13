@@ -10,11 +10,13 @@ public class PathsControl {
     public static final String ACTUALIZAR_LLAMADA = "/actualizarLlamada";
     //endregion
 
+
     //region Endpoints Llamadas Telefonicas
     public static final String LISTAR_LLAMADAS_TELEFONICAS = "/listarLlamadasTelefonicas";
     public static final String IMPORTAR_EXCEL_LLAMADAS = "/importExcelLlamadas";
     public static final String EXPORTAR_EXCEL_LLAMADAS = "/exportExcelLlamadas";
     //endregion
+
 
     //region Endpoints Autorización de llamada telefónica a clientes
     public static final String LISTAR_AUTORIZACION_LLAMADAS = "/listarAutorizacionLlamadas";
@@ -24,6 +26,7 @@ public class PathsControl {
     public static final String ACTUALIZAR_AUTORIZACION_LLAMADA = "/actualizarAutorizacionLlamada";
     //endregion
 
+
     //region Endpoints Autorización general de llamada telefónica
     public static final String LISTAR_AUT_GENERAL_LLAMADAS = "/listarAutorizacionGeneralLlamadas";
     public static final String OBTENER_DETALLE_NUMERO_TELEFONICO = "/obtenerDetalleNumeroTelefonico";
@@ -31,6 +34,7 @@ public class PathsControl {
     public static final String REGISTRAR_AUT_GENERAL_LLAMADA = "/registrarAutorizacionGeneralLlamada";
     public static final String ACTUALIZAR_AUT_GENERAL_LLAMADA = "/actualizarAutorizacionGeneralLlamada";
     //endregion
+
 
     //region Endpoints Registro de llamadas telefonicas
     public static final String LISTAR_LLAMADA_TIPO = "/listarLlamadaTipo";
@@ -42,6 +46,7 @@ public class PathsControl {
     public static final String EXPORTAR_EXCEL_TELEFONOS_PERSONAL = "/exportExcelTelefonosPersonal";
     //endregion
 
+
     //region Endpoints Registro de Personal Exonerado
     public static final String LISTAR_PERSONAL_EXONERADO = "/listarPersonalExonerado";
     public static final String OBTENER_PERSONAL_POR_CODIGO_USUARIO = "/obtenerPersonalPorCodigoUsuario";
@@ -51,4 +56,13 @@ public class PathsControl {
     public static final String ANULAR_PERSONAL_EXONERADO = "/anularPersonalExonerado";
     public static final String EXPORTAR_EXCEL_PERSONAL_EXONERADO = "/exportExcelPersonalExonerado";
     //endregion
+
+
+    //region Endpoints Costo de llamadas telefónicas
+    public static final String LISTAR_LLAMADAS_PENDIENTES = "/listarLlamadasPendientes";
+    public static final String LISTAR_COSTO_POR_LLAMADA = "/listarCostoPorLlamada";
+    public static final String OBTENER_CANTIDAD_LLAMADAS = "/obtenerCantidadLlamadas";
+    public static final String PROCESAR_LLAMADAS = "/procesarLlamadas";
+    //endregion
+
 }

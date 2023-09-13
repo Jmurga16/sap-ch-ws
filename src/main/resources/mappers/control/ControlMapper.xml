@@ -18,7 +18,9 @@
         exec SAP_ForRegLlaTel_sp
         #{llamada.codigo},
         #{llamada.descripcion},
-        #{llamada.unidadMedida},
+        #{llamada.unidadMedidaId},
+        #{llamada.telefonoTipoId},
+        #{llamada.telefonoDestinoId},
         #{llamada.precioUnitario},
         #{llamada.fechaDesde},
         #{llamada.fechaHasta}
@@ -29,7 +31,9 @@
         #{llamada.llamadaId},
         #{llamada.codigo},
         #{llamada.descripcion},
-        #{llamada.unidadMedida},
+        #{llamada.unidadMedidaId},
+        #{llamada.telefonoTipoId},
+        #{llamada.telefonoDestinoId},
         #{llamada.precioUnitario},
         #{llamada.fechaDesde},
         #{llamada.fechaHasta}
@@ -155,14 +159,12 @@
         exec SAP_ForLisLlaTip_sp
     </select>
 
-
     <select id="listarLlamadasPorUsuario" resultType="map">
         exec SAP_ForLisLlaUsr_sp
         #{usuario},
         #{page},
         #{limit}
     </select>
-
 
     <select id="obtenerDetalleLlamadaTelefonica" resultType="map">
         exec SAP_ForDetRegLla_sp
@@ -210,18 +212,15 @@
         #{vigente}
     </select>
 
-
     <select id="obtenerPersonalPorCodigoUsuario" resultType="map">
         exec SAP_ForLisPerCod_sp
         #{codigoUsuario}
     </select>
 
-
     <select id="obtenerDetallePersonalExonerado" resultType="map">
         exec SAP_ForDetPerExo_sp
         #{personalExoneradoId}
     </select>
-
 
     <select id="registrarPersonalExonerado" resultType="map">
         exec SAP_ForRegPerExo_sp
@@ -252,4 +251,29 @@
         exec SAP_ForExpPerExo_sp
         #{vigente}
     </select>
+
+
+    <select id="listarLlamadasPendientes" resultType="map">
+        exec SAP_ForLisLlaPen_sp
+        #{fechaDesde},
+        #{fechaHasta}
+    </select>
+
+    <select id="listarCostoPorLlamada" resultType="map">
+        exec SAP_ForLisCosLla_sp
+    </select>
+
+    <select id="obtenerCantidadLlamadas" resultType="map">
+        exec SAP_ForLisCanLla_sp
+        #{fechaDesde},
+        #{fechaHasta}
+    </select>
+
+    <select id="procesarLlamadas" resultType="map">
+        exec SAP_ForProcLlam_sp
+        #{request.fechaDesde},
+        #{request.fechaHasta},
+        #{request.usuarioRegistro}
+    </select>
+
 </mapper>

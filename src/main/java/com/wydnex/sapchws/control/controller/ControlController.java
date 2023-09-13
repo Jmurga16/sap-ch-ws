@@ -182,5 +182,32 @@ public class ControlController {
     }
 
 //endregion
+
+
+    //region Controllers Costo de llamadas telefónicas
+    @GetMapping(LISTAR_LLAMADAS_PENDIENTES)
+    public ResponseApi<List<Map<String, String>>> listarLlamadasPendientes(@RequestParam("fechaDesde") String fechaDesde, @RequestParam("fechaHasta") String fechaHasta) {
+        return ResponseApi.build(controlService.listarLlamadasPendientes(fechaDesde, fechaHasta));
+    }
+
+    @GetMapping(LISTAR_COSTO_POR_LLAMADA)
+    public ResponseApi<List<Map<String, String>>> listarCostoPorLlamada() {
+        return ResponseApi.build(controlService.listarCostoPorLlamada());
+    }
+
+
+    @GetMapping(OBTENER_CANTIDAD_LLAMADAS)
+    public ResponseApi<Map<String, String>> obtenerCantidadLlamadas(@RequestParam("fechaDesde") String fechaDesde, @RequestParam("fechaHasta") String fechaHasta) {
+        return ResponseApi.build(controlService.obtenerCantidadLlamadas(fechaDesde, fechaHasta));
+    }
+
+    @PostMapping(PROCESAR_LLAMADAS)
+    public ResponseApi<Map<String, Integer>> procesarLlamadas(@RequestBody Map<String, String> request) {
+        return ResponseApi.build(controlService.procesarLlamadas(request));
+    }
+
+    //endregion
+
+
 }
 

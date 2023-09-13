@@ -89,7 +89,20 @@ public interface ControlMapper {
     Map<String, Integer> actualizarPersonalExonerado(@Param("personalExonerado") Map<String, String> personalExonerado);
 
     Map<String, Integer> anularPersonalExonerado(@Param("personalExonerado") Map<String, String> personalExonerado);
+
     List<Map<String, Object>> exportExcelPersonalExonerado(@Param("vigente") Integer vigente);
+
+    //endregion
+
+
+    //region Mapper Costo de llamadas telefónicas
+    List<Map<String, String>> listarLlamadasPendientes(@Param("fechaDesde") String fechaDesde, @Param("fechaHasta") String fechaHasta);
+
+    List<Map<String, String>> listarCostoPorLlamada();
+
+    Map<String, String> obtenerCantidadLlamadas(@Param("fechaDesde") String fechaDesde, @Param("fechaHasta") String fechaHasta);
+
+    Map<String, Integer> procesarLlamadas(@Param("request") Map<String, String> request);
 
     //endregion
 
