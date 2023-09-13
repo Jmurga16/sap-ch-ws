@@ -102,7 +102,7 @@ public interface ControlMapper {
 
     Map<String, String> obtenerCantidadLlamadas(@Param("fechaDesde") String fechaDesde, @Param("fechaHasta") String fechaHasta);
 
-    Map<String, Integer> procesarLlamadas(@Param("request") Map<String, String> request);
+    List<Map<String, String>> procesarLlamadas(@Param("request") Map<String, String> request);
 
     //endregion
 

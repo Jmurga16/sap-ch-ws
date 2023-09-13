@@ -202,7 +202,7 @@ public class ControlController {
     }
 
     @PostMapping(PROCESAR_LLAMADAS)
-    public ResponseApi<Map<String, Integer>> procesarLlamadas(@RequestBody Map<String, String> request) {
+    public ResponseApi<List<Map<String, String>>> procesarLlamadas(@RequestBody Map<String, String> request) {
         return ResponseApi.build(controlService.procesarLlamadas(request));
     }
 

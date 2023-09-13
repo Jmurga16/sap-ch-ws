@@ -186,8 +186,8 @@
         #{llamada.telefonoDestinoId},
         #{llamada.motivo},
         #{llamada.vigente},
-        #{llamada.telefonoClienteId},
-        #{llamada.telefonoGeneralId},
+        #{llamada.autorizacionClienteId},
+        #{llamada.autorizacionGeneralId},
         #{llamada.codigoUsuario}
     </select>
 

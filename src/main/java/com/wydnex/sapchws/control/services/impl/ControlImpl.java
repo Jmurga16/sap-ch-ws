@@ -303,15 +303,14 @@ public class ControlImpl implements ControlService {
     }
 
     @Override
-    public Map<String, Integer> procesarLlamadas(Map<String, String> request) {
+    public List<Map<String, String>> procesarLlamadas(Map<String, String> request) {
 
         request.put("usuarioRegistro", "user");
 
         //UserDetailsCustom user = (UserDetailsCustom) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         //codigoUsuario= user.getCodigo();
 
-        Map<String, Integer> result = controlMapper.procesarLlamadas(request);
-        return result;
+        return controlMapper.procesarLlamadas(request);
     }
 
     //endregion

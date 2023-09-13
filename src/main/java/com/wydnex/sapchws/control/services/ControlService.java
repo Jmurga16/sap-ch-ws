@@ -97,7 +97,7 @@ public interface ControlService {
     List<Map<String, String>> listarLlamadasPendientes(String fechaDesde, String fechaHasta);
     List<Map<String, String>> listarCostoPorLlamada();
     Map<String, String> obtenerCantidadLlamadas(String fechaDesde, String fechaHasta);
-    Map<String, Integer> procesarLlamadas(Map<String, String> request);
+    List<Map<String, String>> procesarLlamadas(Map<String, String> request);
 
     //endregion
 
