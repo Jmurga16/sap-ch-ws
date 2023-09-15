@@ -65,4 +65,13 @@ public class PathsControl {
     public static final String PROCESAR_LLAMADAS = "/procesarLlamadas";
     //endregion
 
+
+    //region Endpoints Genera descuento telefónico
+    public static final String LISTAR_MESES = "/listarMeses";
+    public static final String LISTAR_ANIOS = "/listarAnios";
+    public static final String OBTENER_ESTADO_POR_MES_ANIO = "/obtenerEstadoPorMesAnio";
+    public static final String PROCESAR_DESCUENTOS = "/procesarDescuentos";
+    public static final String LISTAR_USUARIOS_EXONERADOS_POR_FECHA = "/listarUsuariosExoneradosPorFecha";
+    //endregion
+
 }

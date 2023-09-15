@@ -209,5 +209,36 @@ public class ControlController {
     //endregion
 
 
+    //region Controllers Genera descuento telefónico
+
+    @GetMapping(LISTAR_MESES)
+    public ResponseApi<List<Map<String, String>>> listarMeses() {
+        return ResponseApi.build(controlService.listarMeses());
+    }
+
+    @GetMapping(LISTAR_ANIOS)
+    public ResponseApi<List<Map<String, String>>> listarAnios() {
+        return ResponseApi.build(controlService.listarAnios());
+    }
+
+    @GetMapping(OBTENER_ESTADO_POR_MES_ANIO)
+    public ResponseApi<Map<String, String>> obtenerEstadoPorMesAnio(@RequestParam("month") Integer month, @RequestParam("year") Integer year) {
+        return ResponseApi.build(controlService.obtenerEstadoPorMesAnio(month, year));
+    }
+
+    @PostMapping(PROCESAR_DESCUENTOS)
+    public ResponseApi<List<Map<String, String>>> procesarDescuentos(@RequestBody Map<String, String> request) {
+        return ResponseApi.build(controlService.procesarDescuentos(request));
+    }
+
+    @GetMapping(LISTAR_USUARIOS_EXONERADOS_POR_FECHA)
+    public ResponseApi<List<Map<String, String>>> listarUsuariosExoneradosPorFecha(@RequestParam("fechaDesde") String fechaDesde, @RequestParam("fechaHasta") String fechaHasta) {
+        return ResponseApi.build(controlService.listarUsuariosExoneradosPorFecha(fechaDesde, fechaHasta));
+    }
+
+
+    //endregion
+
+
 }
 

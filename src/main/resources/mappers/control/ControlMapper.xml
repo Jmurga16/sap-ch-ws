@@ -276,4 +276,33 @@
         #{request.usuarioRegistro}
     </select>
 
+
+    <select id="listarMeses" resultType="map">
+        exec SAP_ForLisMonth_sp
+    </select>
+
+    <select id="listarAnios" resultType="map">
+        exec SAP_ForLisYear_sp
+    </select>
+
+    <select id="obtenerEstadoPorMesAnio" resultType="map">
+        exec SAP_ForEstadMMYY_sp
+        #{month},
+        #{year}
+    </select>
+
+    <select id="procesarDescuentos" resultType="map">
+        exec SAP_ForProcDesc_sp
+        #{request.month},
+        #{request.year},
+        #{request.descontar},
+        #{request.usuarioRegistro}
+    </select>
+
+    <select id="listarUsuariosExoneradosPorFecha" resultType="map">
+        exec SAP_ForLisUsrExo_sp
+        #{fechaDesde},
+        #{fechaHasta}
+    </select>
+
 </mapper>

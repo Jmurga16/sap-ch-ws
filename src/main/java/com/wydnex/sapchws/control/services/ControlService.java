@@ -101,5 +101,13 @@ public interface ControlService {
 
     //endregion
 
+    //region Service Costo de llamadas telefónicas
+    List<Map<String, String>> listarMeses();
+    List<Map<String, String>> listarAnios();
+    Map<String, String> obtenerEstadoPorMesAnio(Integer month, Integer year);
+    List<Map<String, String>> procesarDescuentos(Map<String, String> request);
+    List<Map<String, String>> listarUsuariosExoneradosPorFecha(String fechaDesde, String fechaHasta);
+    //endregion
+
 
 }

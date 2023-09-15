@@ -316,4 +316,40 @@ public class ControlImpl implements ControlService {
     //endregion
 
 
+    //region Implementacion Genera descuento telefónico - FER106
+    @Override
+    public List<Map<String, String>> listarMeses() {
+        return controlMapper.listarMeses();
+    }
+
+    @Override
+    public List<Map<String, String>> listarAnios() {
+        return controlMapper.listarAnios();
+    }
+
+    @Override
+    public Map<String, String> obtenerEstadoPorMesAnio(Integer month, Integer year) {
+        return controlMapper.obtenerEstadoPorMesAnio(month, year);
+    }
+
+    @Override
+    public List<Map<String, String>> procesarDescuentos(Map<String, String> request) {
+
+        request.put("usuarioRegistro", "user");
+
+        //UserDetailsCustom user = (UserDetailsCustom) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        //codigoUsuario= user.getCodigo();
+
+        return controlMapper.procesarDescuentos(request);
+    }
+
+    @Override
+    public List<Map<String, String>> listarUsuariosExoneradosPorFecha(String fechaDesde, String fechaHasta) {
+        return controlMapper.listarUsuariosExoneradosPorFecha(fechaDesde, fechaHasta);
+    }
+
+
+    //endregion
+
+
 }

@@ -107,4 +107,17 @@ public interface ControlMapper {
     //endregion
 
 
+    //region Mapper Costo de llamadas telefónicas
+    List<Map<String, String>> listarMeses();
+
+    List<Map<String, String>> listarAnios();
+
+    Map<String, String> obtenerEstadoPorMesAnio(@Param("month") Integer month, @Param("year") Integer year);
+
+    List<Map<String, String>> procesarDescuentos(@Param("request") Map<String, String> request);
+
+    List<Map<String, String>> listarUsuariosExoneradosPorFecha(@Param("fechaDesde") String fechaDesde, @Param("fechaHasta") String fechaHasta);
+
+    //endregion
+
 }
