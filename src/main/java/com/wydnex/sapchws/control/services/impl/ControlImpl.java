@@ -352,4 +352,16 @@ public class ControlImpl implements ControlService {
     //endregion
 
 
+    //region Implementacion Reportes de descuento telefónico - FER107
+    @Override
+    public List<Map<String, Object>> listarReporteDescuentoDetalle(Integer month, Integer year) {
+        return controlMapper.listarReporteDescuentoDetalle(month, year);
+    }
+
+    @Override
+    public List<Map<String, Object>> listarReporteDescuentoResumen(Integer month, Integer year) {
+        return controlMapper.listarReporteDescuentoResumen(month, year);
+    }
+
+    //endregion
 }

@@ -236,9 +236,22 @@ public class ControlController {
         return ResponseApi.build(controlService.listarUsuariosExoneradosPorFecha(fechaDesde, fechaHasta));
     }
 
-
     //endregion
 
+
+    //region Controllers Reportes de descuento telefónico
+
+    @GetMapping(LISTAR_REPORTE_DESCUENTO_DETALLE)
+    public ResponseApi<List<Map<String, Object>>> listarReporteDescuentoDetalle(@RequestParam("month") Integer month, @RequestParam("year") Integer year) {
+        return ResponseApi.build(controlService.listarReporteDescuentoDetalle(month, year));
+    }
+
+    @GetMapping(LISTAR_REPORTE_DESCUENTO_RESUMEN)
+    public ResponseApi<List<Map<String, Object>>> listarReporteDescuentoResumen(@RequestParam("month") Integer month, @RequestParam("year") Integer year) {
+        return ResponseApi.build(controlService.listarReporteDescuentoResumen(month, year));
+    }
+
+    //endregion
 
 }
 

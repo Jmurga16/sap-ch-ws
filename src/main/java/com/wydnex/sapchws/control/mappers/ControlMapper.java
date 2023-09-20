@@ -107,7 +107,7 @@ public interface ControlMapper {
     //endregion
 
 
-    //region Mapper Costo de llamadas telefónicas
+    //region Mapper Genera descuento telefónico - FER106
     List<Map<String, String>> listarMeses();
 
     List<Map<String, String>> listarAnios();
@@ -118,6 +118,13 @@ public interface ControlMapper {
 
     List<Map<String, String>> listarUsuariosExoneradosPorFecha(@Param("fechaDesde") String fechaDesde, @Param("fechaHasta") String fechaHasta);
 
+    //endregion
+
+
+    //region Mapper Reportes de descuento telefónico - FER107
+
+    List<Map<String, Object>> listarReporteDescuentoDetalle(@Param("month") Integer month, @Param("year") Integer year);
+    List<Map<String, Object>> listarReporteDescuentoResumen(@Param("month") Integer month, @Param("year") Integer year);
     //endregion
 
 }

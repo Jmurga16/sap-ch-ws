@@ -305,4 +305,18 @@
         #{fechaHasta}
     </select>
 
+
+    <select id="listarReporteDescuentoDetalle" resultType="map">
+        exec SAP_ForRepDctDet_sp
+        #{month},
+        #{year}
+    </select>
+
+    <select id="listarReporteDescuentoResumen" resultType="map">
+        exec SAP_ForRepDctRes_sp
+        #{month},
+        #{year}
+    </select>
+
+
 </mapper>

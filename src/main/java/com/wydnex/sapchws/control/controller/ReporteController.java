@@ -34,7 +34,7 @@ public class ReporteController {
     @GetMapping(EXPORTAR_EXCEL_LLAMADAS)
     public ResponseEntity<Resource> exportExcelLlamadas(@RequestParam("fechaDesde") String fechaDesde, @RequestParam("fechaHasta") String fechaHasta) {
 
-        Resource anexoGenerador = reporteService.generarExcelLlamadas(fechaDesde,fechaHasta);
+        Resource anexoGenerador = reporteService.generarExcelLlamadas(fechaDesde, fechaHasta);
 
         return ResponseEntity.ok()
                 .headers(httpHeaders -> {
@@ -44,7 +44,6 @@ public class ReporteController {
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
                 .body(anexoGenerador);
     }
-
 
     @GetMapping(EXPORTAR_EXCEL_TELEFONOS_PERSONAL)
     public ResponseEntity<Resource> exportExcelTelefonosPersonal(@RequestParam("vigente") Integer vigente) {
@@ -74,5 +73,32 @@ public class ReporteController {
                 .body(anexoGenerador);
     }
 
+    @GetMapping(EXPORTAR_REPORTE_DESCUENTO_DETALLE)
+    public ResponseEntity<Resource> exportarReporteDescuentoDetalle(@RequestParam("month") Integer month, @RequestParam("year") Integer year) {
+
+        Resource anexoGenerador = reporteService.generarExcelReporteDescuentoDetalle(month, year);
+
+        return ResponseEntity.ok()
+                .headers(httpHeaders -> {
+                    httpHeaders.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + "FER107_Detalle_Anexo.xlsx");
+                    httpHeaders.add("ms-filename", "");
+                })
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(anexoGenerador);
+    }
+
+    @GetMapping(EXPORTAR_REPORTE_DESCUENTO_RESUMEN)
+    public ResponseEntity<Resource> exportarReporteDescuentoResumen(@RequestParam("month") Integer month, @RequestParam("year") Integer year) {
+
+        Resource anexoGenerador = reporteService.generarExcelReporteDescuentoResumen(month, year);
+
+        return ResponseEntity.ok()
+                .headers(httpHeaders -> {
+                    httpHeaders.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + "FER107_Resumen_Anexo.xlsx");
+                    httpHeaders.add("ms-filename", "");
+                })
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(anexoGenerador);
+    }
 
 }

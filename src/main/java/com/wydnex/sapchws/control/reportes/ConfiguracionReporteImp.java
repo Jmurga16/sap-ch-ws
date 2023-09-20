@@ -35,4 +35,14 @@ public class ConfiguracionReporteImp implements ConfiguracionReporteService {
         return new PersonalExoneradoReporte(mapList).generarReporte();
     }
 
+    public Resource generarExcelReporteDescuentoDetalle(Integer month, Integer year) {
+        List<Map<String, Object>> mapList = controlService.listarReporteDescuentoDetalle(month, year);
+        return new DescuentoTelefonicoReporteDetalle(mapList).generarReporte();
+    }
+
+    public Resource generarExcelReporteDescuentoResumen(Integer month, Integer year) {
+        List<Map<String, Object>> mapList = controlService.listarReporteDescuentoResumen(month, year);
+        return new DescuentoTelefonicoReporteResumen(mapList).generarReporte();
+    }
+
 }

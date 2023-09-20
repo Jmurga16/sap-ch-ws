@@ -74,4 +74,12 @@ public class PathsControl {
     public static final String LISTAR_USUARIOS_EXONERADOS_POR_FECHA = "/listarUsuariosExoneradosPorFecha";
     //endregion
 
+
+    //region Endpoints Reportes de descuento telefónico
+    public static final String EXPORTAR_REPORTE_DESCUENTO_DETALLE = "/exportarReporteDescuentoDetalle";
+    public static final String EXPORTAR_REPORTE_DESCUENTO_RESUMEN = "/exportarReporteDescuentoResumen";
+    public static final String LISTAR_REPORTE_DESCUENTO_DETALLE = "/listarReporteDescuentoDetalle";
+    public static final String LISTAR_REPORTE_DESCUENTO_RESUMEN = "/listarReporteDescuentoResumen";
+    //endregion
+
 }
