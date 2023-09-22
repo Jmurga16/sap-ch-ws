@@ -102,7 +102,7 @@ public interface ControlService {
     //endregion
 
 
-    //region Service Costo de llamadas telefónicas
+    //region Service Genera descuento telefónico
     List<Map<String, String>> listarMeses();
     List<Map<String, String>> listarAnios();
     Map<String, String> obtenerEstadoPorMesAnio(Integer month, Integer year);

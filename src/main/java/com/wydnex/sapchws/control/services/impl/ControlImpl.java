@@ -76,7 +76,7 @@ public class ControlImpl implements ControlService {
         Map<String, Object> generalMap = new HashMap<>();
         List<Map<String, String>> maps = new ArrayList<>();
 
-        var numberRows = worksheet.getPhysicalNumberOfRows();
+        var numberRows = worksheet.getLastRowNum();
 
         var codigoUsuario = "Prueba";
 
@@ -87,28 +87,32 @@ public class ControlImpl implements ControlService {
             Map<String, String> map = new HashMap<>();
             XSSFRow row = worksheet.getRow(i);
 
-            if (row != null) {
-                map.put("codigoProceso", row.getCell(0).getRawValue());
-                map.put("periodo", row.getCell(1).toString());
-                map.put("codigoPersona", row.getCell(2).getRawValue());
-                map.put("numeroTelefonico", row.getCell(3).getRawValue());
-                map.put("codigoRegistro", row.getCell(4).getRawValue());
-                map.put("tipoLlamada", row.getCell(5).getRawValue());
-                map.put("fechaLlamada", row.getCell(6).toString());
-                map.put("horaLlamada", row.getCell(7).toString());
-                map.put("duracionLlamada", Integer.parseInt(row.getCell(8).getRawValue()) + "");
-                map.put("precioLlamada", row.getCell(9).toString());
-                map.put("usuario", codigoUsuario);
-                map.put("fechaProceso", row.getCell(11).toString());
-                map.put("codigoEstado", row.getCell(12).getRawValue());
-                map.put("ctipidella", row.getCell(13).toString());
-                map.put("nombrePersona", row.getCell(14).toString());
+            try {
+                if (row != null) {
+                    map.put("codigoProceso", row.getCell(0).getRawValue());
+                    map.put("periodo", row.getCell(1).toString());
+                    map.put("codigoPersona", row.getCell(2).getRawValue());
+                    map.put("numeroTelefonico", row.getCell(3).getRawValue());
+                    map.put("codigoRegistro", row.getCell(4).getRawValue());
+                    map.put("tipoLlamada", row.getCell(5).getRawValue());
+                    map.put("fechaLlamada", row.getCell(6).toString());
+                    map.put("horaLlamada", row.getCell(7).toString());
+                    map.put("duracionLlamada", Integer.parseInt(row.getCell(8).getRawValue()) + "");
+                    map.put("precioLlamada", row.getCell(9).toString());
+                    map.put("usuario", codigoUsuario);
+                    map.put("fechaProceso", row.getCell(11).toString());
+                    map.put("codigoEstado", row.getCell(12).getRawValue());
+                    map.put("ctipidella", row.getCell(13).toString());
+                    map.put("nombrePersona", row.getCell(14).toString());
 
+                    controlMapper.importExcelLlamadas(map);
 
-                Map<String, Integer> result = controlMapper.importExcelLlamadas(map);
-
-                maps.add(map);
+                    maps.add(map);
+                }
+            } catch (NullPointerException e) {
+                i = numberRows - 1;
             }
+
 
         }
 
