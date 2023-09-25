@@ -368,4 +368,37 @@ public class ControlImpl implements ControlService {
     }
 
     //endregion
+
+
+    //region Implementacion Cargos de movilidad - FER086
+    @Override
+    public List<Map<String, String>> listarCargos() {
+        return controlMapper.listarCargos();
+    }
+
+    @Override
+    public Map<String, String> obtenerDetalleCargo(Integer cargoId) {
+        return controlMapper.obtenerDetalleCargo(cargoId);
+    }
+
+    @Override
+    public Map<String, String> registrarCargoMovilidad(Map<String, String> request) {
+
+        //UserDetailsCustom user = (UserDetailsCustom) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String codigoUsuario = "COD001";//user.getCodigo();
+
+        request.put("usuarioRegistro", codigoUsuario);
+        return controlMapper.registrarCargoMovilidad(request);
+    }
+
+    @Override
+    public Map<String, String> actualizarCargoMovilidad(Map<String, String> request) {
+        return controlMapper.actualizarCargoMovilidad(request);
+    }
+
+    @Override
+    public List<Map<String, String>> listarCargosMovilidad(Integer estado) {
+        return controlMapper.listarCargosMovilidad(estado);
+    }
+    //endregion
 }

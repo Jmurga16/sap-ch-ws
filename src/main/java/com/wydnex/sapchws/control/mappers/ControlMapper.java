@@ -127,4 +127,17 @@ public interface ControlMapper {
     List<Map<String, Object>> listarReporteDescuentoResumen(@Param("month") Integer month, @Param("year") Integer year);
     //endregion
 
+
+    //region Mapper Autorización general de llamada telefónica
+    List<Map<String, String>> listarCargos();
+
+    Map<String, String> obtenerDetalleCargo(@Param("cargoId") Integer cargoId);
+
+    Map<String, String> registrarCargoMovilidad(@Param("request") Map<String, String> request);
+
+    Map<String, String> actualizarCargoMovilidad(@Param("request") Map<String, String> request);
+
+    List<Map<String, String>> listarCargosMovilidad(@Param("estado") Integer estado);
+    //endregion
+
 }

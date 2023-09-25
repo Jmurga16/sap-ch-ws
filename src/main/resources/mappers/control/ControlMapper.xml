@@ -319,4 +319,36 @@
     </select>
 
 
+    <select id="listarCargos" resultType="map">
+        exec SAP_ForLisCargos_sp
+    </select>
+
+    <select id="obtenerDetalleCargo" resultType="map">
+        exec SAP_ForDetCargos_sp
+        #{cargoId}
+    </select>
+
+    <select id="registrarCargoMovilidad" resultType="map">
+        exec SAP_ForRegCarMov_sp
+        #{request.cargoId},
+        #{request.areaFuncionalId},
+        #{request.nivelId},
+        #{request.subNivelId},
+        #{request.usuarioRegistro}
+    </select>
+
+    <select id="actualizarCargoMovilidad" resultType="map">
+        exec SAP_ForUpdCarMov_sp
+        #{request.cargoMovilidadId},
+        #{request.cargoId},
+        #{request.areaFuncionalId},
+        #{request.nivelId},
+        #{request.subNivelId}
+    </select>
+
+    <select id="listarCargosMovilidad" resultType="map">
+        exec SAP_ForLisCarMov_sp
+        #{estado}
+    </select>
+
 </mapper>

@@ -118,4 +118,17 @@ public interface ControlService {
     //endregion
 
 
+    //region Service Cargos de movilidad
+    List<Map<String, String>> listarCargos();
+
+    Map<String, String> obtenerDetalleCargo(Integer cargoId);
+
+    Map<String, String> registrarCargoMovilidad(Map<String, String> request);
+
+    Map<String, String> actualizarCargoMovilidad(Map<String, String> request);
+
+    List<Map<String, String>> listarCargosMovilidad(Integer estado);
+
+    //endregion
+
 }

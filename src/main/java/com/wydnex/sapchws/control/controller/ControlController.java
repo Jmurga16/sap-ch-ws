@@ -253,5 +253,33 @@ public class ControlController {
 
     //endregion
 
+
+    //region Controllers Cargos de movilidad
+    @GetMapping(LISTAR_CARGOS)
+    public ResponseApi<List<Map<String, String>>> listarCargos() {
+        return ResponseApi.build(controlService.listarCargos());
+    }
+
+    @GetMapping(OBTENER_DETALLE_CARGO)
+    public ResponseApi<Map<String, String>> obtenerDetalleCargo(@RequestParam("cargoId") Integer cargoId) {
+        return ResponseApi.build(controlService.obtenerDetalleCargo(cargoId));
+    }
+
+    @PostMapping(REGISTRAR_CARGO_MOVILIDAD)
+    public ResponseApi<Map<String, String>> registrarCargoMovilidad(@RequestBody Map<String, String> request) {
+        return ResponseApi.build(controlService.registrarCargoMovilidad(request));
+    }
+
+    @PostMapping(ACTUALIZAR_CARGO_MOVILIDAD)
+    public ResponseApi<Map<String, String>> actualizarCargoMovilidad(@RequestBody Map<String, String> request) {
+        return ResponseApi.build(controlService.actualizarCargoMovilidad(request));
+    }
+
+    @GetMapping(LISTAR_CARGOS_MOVILIDAD)
+    public ResponseApi<List<Map<String, String>>> listarCargosMovilidad(@RequestParam("estado") Integer estado) {
+        return ResponseApi.build(controlService.listarCargosMovilidad(estado));
+    }
+
+    //endregion
 }
 

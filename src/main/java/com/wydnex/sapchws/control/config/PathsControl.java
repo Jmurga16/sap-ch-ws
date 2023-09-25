@@ -82,4 +82,13 @@ public class PathsControl {
     public static final String LISTAR_REPORTE_DESCUENTO_RESUMEN = "/listarReporteDescuentoResumen";
     //endregion
 
+
+    //region Endpoints Cargos de movilidad
+    public static final String LISTAR_CARGOS = "/listarCargos";
+    public static final String OBTENER_DETALLE_CARGO = "/obtenerDetalleCargo";
+    public static final String REGISTRAR_CARGO_MOVILIDAD = "/registrarCargoMovilidad";
+    public static final String ACTUALIZAR_CARGO_MOVILIDAD = "/actualizarCargoMovilidad";
+    public static final String LISTAR_CARGOS_MOVILIDAD = "/listarCargosMovilidad";
+    //endregion
+
 }
